@@ -3,14 +3,16 @@ nav{
     justify-content: space-around;
     padding: 16px;
     align-items: center;
+    margin-left: 15rem;
 }
 
-input{
+.search{
     border: none;
-    border-radius: 2px;
-    background: rgba(0, 0, 0, 0.075);
+    border-radius: 4px;
+    background: rgba(82, 78, 78, 0.075);
     outline: none;
-    padding: 8px 20px;
+    width: 300px;
+    padding: 10px 20px;
 }
 
 .nav-icons{
@@ -18,3 +20,4 @@ input{
     height: 1.3rem;
     margin-left: 2rem;
 }
+

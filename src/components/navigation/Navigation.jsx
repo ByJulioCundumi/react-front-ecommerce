@@ -4,9 +4,9 @@ import "./Navigation.css"
 
 function Navigation() {
   return (
-    <nav>
+    <nav className='nav'>
         <div>
-            <input type="text" placeholder='Search a product'/>
+            <input className='search' type="text" placeholder='Search a product'/>
         </div>
         <div className='icons'>
             <a href="#">

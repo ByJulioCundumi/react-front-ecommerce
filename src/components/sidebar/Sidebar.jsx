@@ -1,8 +1,20 @@
 import React from 'react'
+import "./Sidebar.css"
+import Category from '../category/Category'
+import Price from '../price/Price'
+import Colors from '../colors/Colors'
 
 function Sidebar() {
   return (
-    <div>Sidebar</div>
+    <section className='sidebar'>
+        <div>
+            <h1 className='sidebar-title'>Filter Options</h1>
+        </div>
+
+        <Category/>
+        <Price/>
+        <Colors/>
+    </section>
   )
 }
 

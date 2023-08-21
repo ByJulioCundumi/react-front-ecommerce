@@ -1,0 +1,38 @@
+.category-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.category-title{
+    font-size: 1.3rem;
+}
+
+.category-items{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 3rem;
+}
+
+.category-label-item:hover{
+    cursor: pointer;
+}
+
+input{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.096);
+    border-radius: 50%;
+    transition: all 0.2s;
+    margin-right: 1rem;
+}
+
+input:checked{
+    background-color: #acaeb1;
+    border-color: #616263;
+    box-shadow: 0 0 0 3px #acaeb1;
+}

@@ -1,6 +1,7 @@
 .card-container{
     display: flex;
     flex-wrap: wrap;
+    gap: 0.4rem;
     padding: 1rem;
     margin-left: 20rem;
 }
@@ -8,7 +9,12 @@
 .card{
     border: 1px solid rgba(26, 24, 24, 0.151);
     border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(26, 24, 24, 0.151);
+    box-shadow: 0 3px 10px rgba(26, 24, 24, 0.089);
+    transition: all 0.5s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
 }
 
 .card-img{
@@ -40,3 +46,4 @@
     display: flex;
     justify-content: end;
 }
+

@@ -1,0 +1,23 @@
+.recommended-flex{
+    display: flex;
+    margin-left: 20rem;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.recommended-title{
+    padding: 10px;
+}
+
+.recommended-btns{
+    display: flex;
+    gap: 0.4rem;
+}
+
+.recommended-btn{
+    border: 1px solid rgba(0, 0, 0, 0.144);
+    background: rgba(56, 54, 54, 0.041);
+    border-radius: 5px;
+    padding: 10px 20px;
+}
