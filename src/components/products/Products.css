@@ -1,0 +1,42 @@
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin-left: 20rem;
+}
+
+.card{
+    border: 1px solid rgba(26, 24, 24, 0.151);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(26, 24, 24, 0.151);
+}
+
+.card-img{
+    width: 12rem;
+    border-radius: inherit;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.card-details{
+    padding: 20px;
+}
+
+.card-stars{
+    color: rgb(255, 153, 0);
+}
+
+.card-reviews{
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.card-price{
+    margin-top: 0.4rem;
+}
+
+.card-bag{
+    display: flex;
+    justify-content: end;
+}
