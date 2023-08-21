@@ -8,6 +8,7 @@
 
 .category-title{
     font-size: 1.3rem;
+    color: rgb(51, 48, 48);
 }
 
 .category-items{
@@ -33,6 +34,6 @@ input{
 
 input:checked{
     background-color: #acaeb1;
-    border-color: #616263;
-    box-shadow: 0 0 0 3px #acaeb1;
+    border-color: rgba(0, 0, 0, 0.171);
+    box-shadow: 0 0 0px 1px #acaeb1;
 }

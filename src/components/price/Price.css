@@ -1,0 +1,19 @@
+.price-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.price-title{
+    font-size: 1.3rem;
+    color: rgb(51, 48, 48);
+    padding: 1rem;
+}
+
+.price-items{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 4rem;
+}

@@ -8,6 +8,7 @@
 
 .recommended-title{
     padding: 10px;
+    color: rgb(51, 48, 48);
 }
 
 .recommended-btns{
@@ -20,4 +21,11 @@
     background: rgba(56, 54, 54, 0.041);
     border-radius: 5px;
     padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.recommended-btn:hover{
+    cursor: pointer;
+    background-color: rgba(56, 54, 54, 0.096);
+    transform: translateY(-2px);
 }
