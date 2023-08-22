@@ -1,80 +1,60 @@
 import React from 'react'
-import { AiFillStar } from 'react-icons/ai'
-import {BsFillBagFill} from "react-icons/bs"
 import "./Products.css"
+import Card from '../card/Card'
+import { useEffect } from 'react'
+import data from '../../api/data'
+import { useFilterDispatchContext, actionTypes, useFilterState } from '../../context/FilterContext'
 
 function Products() {
+    const dispatch = useFilterDispatchContext()
+    const state = useFilterState()
+    const {filteredProducts} = state;
+
+    useEffect(()=>{
+        switch(state.selected){
+            case "":
+                dispatch({
+                    type: actionTypes.SET_FILTERED_PRODUCTS,
+                    payload: data
+                })
+                console.log(data)
+                break;
+            //
+            case "query":
+                const queryFiltered = data.filter((p)=>{
+                    return p.title.toLowerCase().includes(state.query.toLowerCase());
+                })
+                dispatch({
+                    type: actionTypes.SET_FILTERED_PRODUCTS,
+                    payload: queryFiltered
+                })
+                console.log(queryFiltered)
+                break;
+            //
+            case "category":
+                const categoryFiltered = data.filter((p)=>{
+                    return p.category.toLowerCase() === state.category.toLowerCase();
+                })
+                dispatch({
+                    type: actionTypes.SET_FILTERED_PRODUCTS,
+                    payload: categoryFiltered
+                })
+                console.log(categoryFiltered)
+                break;
+        }
+    },[state.selected, state.query, state.category])
+    
+
   return (
     <section className='card-container'>
-
-        <section className="card">
-            <img className='card-img' src="https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg" alt="" />
-            <div className="card-details">
-                <h3 className="card-title">Nike Air Vapormax Plus</h3>
-                <section className="card-reviews">
-                    <AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/>
-                    <span className="total-reviews">4</span>
-                </section>
-                <section className="card-price">
-                    <div className="price"><del>$500</del> $200</div>
-                </section>
-                <div className="card-bag">
-                    <BsFillBagFill className='bag'/>
-                </div>
-            </div>
-        </section>
-
-        <section className="card">
-            <img className='card-img' src="https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg" alt="" />
-            <div className="card-details">
-                <h3 className="card-title">Nike Air Vapormax Plus</h3>
-                <section className="card-reviews">
-                    <AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/>
-                    <span className="total-reviews">4</span>
-                </section>
-                <section className="card-price">
-                    <div className="price"><del>$500</del> $200</div>
-                </section>
-                <div className="card-bag">
-                    <BsFillBagFill className='bag'/>
-                </div>
-            </div>
-        </section>
-
-        <section className="card">
-            <img className='card-img' src="https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg" alt="" />
-            <div className="card-details">
-                <h3 className="card-title">Nike Air Vapormax Plus</h3>
-                <section className="card-reviews">
-                    <AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/>
-                    <span className="total-reviews">4</span>
-                </section>
-                <section className="card-price">
-                    <div className="price"><del>$500</del> $200</div>
-                </section>
-                <div className="card-bag">
-                    <BsFillBagFill className='bag'/>
-                </div>
-            </div>
-        </section>
-
-        <section className="card">
-            <img className='card-img' src="https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg" alt="" />
-            <div className="card-details">
-                <h3 className="card-title">Nike Air Vapormax Plus</h3>
-                <section className="card-reviews">
-                    <AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/><AiFillStar className='card-stars'/>
-                    <span className="total-reviews">4</span>
-                </section>
-                <section className="card-price">
-                    <div className="price"><del>$500</del> $200</div>
-                </section>
-                <div className="card-bag">
-                    <BsFillBagFill className='bag'/>
-                </div>
-            </div>
-        </section>
-
+        {filteredProducts.length > 0 ? filteredProducts.map(({title, img, prevPrice, newPrice}, index)=>{
+            return <Card key={index}
+                title={title}
+                img={img}
+                prevPrice={prevPrice}
+                newPrice={newPrice}
+            />
+        }) : <span>No hay productos para mostrar</span>}
     </section>
   )
 }

@@ -1,30 +1,44 @@
 import React from 'react'
+import { useFilterDispatchContext, actionTypes } from '../../context/FilterContext'
 import "./Category.css"
 
 function Category() {
+  const dispatch = useFilterDispatchContext()
+
+  const handleCategory = (e)=>{
+    dispatch({
+      type: actionTypes.SET_CATEGORY,
+      payload: e.target.value
+    })
+    dispatch({
+      type: actionTypes.SET_SELECTED,
+      payload: "category"
+  })
+  }
+
   return (
     <div className='category-container'>
       <h2 className="category-title">Category</h2>
       <div className="category-items">
 
         <label className="category-label-item">
-          <input type="radio" name='category'/>All
+          <input onChange={handleCategory} type="radio" name='category' value="All"/>All
         </label>
 
         <label className="category-label-item">
-          <input type="radio" name='category'/>Sneakers
+          <input onChange={handleCategory} type="radio" name='category' value="Sneakers"/>Sneakers
         </label>
 
         <label className="category-label-item">
-          <input type="radio" name='category'/>Flats
+          <input onChange={handleCategory} type="radio" name='category' value="Flats"/>Flats
         </label>
 
         <label className="category-label-item">
-          <input type="radio" name='category'/>Sandals
+          <input onChange={handleCategory} type="radio" name='category' value="Sandals"/>Sandals
         </label>
 
         <label className="category-label-item">
-          <input type="radio" name='category'/>Heels
+          <input onChange={handleCategory} type="radio" name='category' value="Heels"/>Heels
         </label>
 
       </div>
