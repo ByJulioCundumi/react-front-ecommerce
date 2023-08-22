@@ -4,48 +4,27 @@ const FilterStateContext = createContext()
 const FilterDispatchContext = createContext()
 
 const actionTypes = {
-    SET_CATEGORY: "SET_CATEGORY",
-    SET_QUERY: "SET_QUERY",
     SET_FILTERED_PRODUCTS: "SET_FILTERED_PRODUCTS",
-    SET_SELECTED: "SET_SELECTED",
-    SET_PRICE: "SET_PRICE"
+    SET_PRODUCTS: "SET_PRODUCTS"
 }
 
 const initialState = {
-    category: null,
-    query: "",
-    selected: "",
-    price: "",
-    filteredProducts: []
+    filteredProducts: [],
+    products: []
 }
 
 const filterReducer = (state, action)=>{
     const {type, payload} = action;
     switch(type){
-        case actionTypes.SET_CATEGORY: 
-            return {
-                ...state,
-                category: payload
-            }
-        case actionTypes.SET_QUERY:
-            return {
-                ...state,
-                query: payload
-            }
         case actionTypes.SET_FILTERED_PRODUCTS:
             return {
                 ...state,
                 filteredProducts: payload
             }
-        case actionTypes.SET_SELECTED:
+        case actionTypes.SET_PRODUCTS:
             return {
                 ...state,
-                selected: payload
-            }
-        case actionTypes.SET_PRICE:
-            return {
-                ...state,
-                price: payload
+                products: payload
             }
         default:
             return state;

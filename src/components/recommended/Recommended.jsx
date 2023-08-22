@@ -1,19 +1,29 @@
 import React from 'react'
-import { useFilterDispatchContext, actionTypes } from '../../context/FilterContext'
+import { useFilterDispatchContext, actionTypes, useFilterState } from '../../context/FilterContext'
+import data from '../../api/data'
 import "./Recommended.css"
 
 function Recommended() {
   const dispatch = useFilterDispatchContext()
+  const state = useFilterState()
+  const {filteredProducts, products} = state;
 
   const handleOnClick = (value)=>{
+
+    if(value === "All"){
     dispatch({
-      type: actionTypes.SET_CATEGORY,
-      payload: value
+        type: actionTypes.SET_FILTERED_PRODUCTS,
+        payload: products
     })
-    dispatch({
-      type: actionTypes.SET_SELECTED,
-      payload: "category"
-  })
+    } else {
+      const filtered = products.filter((p)=>{
+         return p.company.toLowerCase() === value.toLowerCase()
+      })
+      dispatch({
+        type: actionTypes.SET_FILTERED_PRODUCTS,
+        payload: filtered
+      })
+    }
   }
 
   return (

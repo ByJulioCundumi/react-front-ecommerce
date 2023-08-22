@@ -1,19 +1,27 @@
 import React from 'react'
-import { useFilterDispatchContext, actionTypes } from '../../context/FilterContext'
+import { useFilterDispatchContext, actionTypes, useFilterState } from '../../context/FilterContext'
 import "./Category.css"
 
 function Category() {
   const dispatch = useFilterDispatchContext()
+  const state = useFilterState()
+  const {filteredProducts, products} = state;
 
   const handleCategory = (e)=>{
-    dispatch({
-      type: actionTypes.SET_CATEGORY,
-      payload: e.target.value
-    })
-    dispatch({
-      type: actionTypes.SET_SELECTED,
-      payload: "category"
-  })
+    if(e.target.value === "All"){
+      dispatch({
+        type: actionTypes.SET_FILTERED_PRODUCTS,
+        payload: products
+      })
+    } else {
+      const filtered = products.filter((p)=>{
+        return p.category.toLowerCase() === e.target.value.toLowerCase()
+      })
+      dispatch({
+        type: actionTypes.SET_FILTERED_PRODUCTS,
+        payload: filtered
+      })
+    }
   }
 
   return (

@@ -1,19 +1,20 @@
 import React from 'react'
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUserAdd } from 'react-icons/ai'
-import { useFilterDispatchContext, actionTypes } from '../../context/FilterContext'
+import { useFilterDispatchContext, actionTypes, useFilterState } from '../../context/FilterContext'
 import "./Navigation.css"
 
 function Navigation() {
     const dispatch = useFilterDispatchContext()
+    const state = useFilterState()
+    const {filteredProducts, products} = state;
     
     const handleOnChange = (e)=>{
-        dispatch({
-            type: actionTypes.SET_QUERY,
-            payload: e.target.value
+        const filtered = products.filter((p)=>{
+            return p.title.toLowerCase().includes(e.target.value.toLowerCase());
         })
         dispatch({
-            type: actionTypes.SET_SELECTED,
-            payload: "query"
+            type: actionTypes.SET_FILTERED_PRODUCTS,
+            payload: filtered
         })
     }
 
