@@ -45,6 +45,14 @@ nav{
     font-weight: bold;
 }
 
+.open-cart{
+    display: block;
+}
+
+.close-cart{
+    display: none;
+}
+
 .cart-modal{
     position: fixed;
     padding: 1rem 2rem;
