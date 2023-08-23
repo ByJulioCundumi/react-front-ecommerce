@@ -41,3 +41,8 @@
     display: flex;
     justify-content: end;
 }
+
+
+.bag:hover{
+    cursor: pointer;
+}

@@ -34,15 +34,16 @@ nav{
 
 .cart-icon{
     position: relative;
-    padding: 1.1rem 0.1rem;
+    padding: 1.1rem 0.2rem;
 }
 
 .cart-icon-span{
     position: absolute;
     top: 0;
     right: 0;
-    color: rgb(255, 123, 0);
+    color: rgb(0, 0, 0);
     font-weight: bold;
+    font-size: small;
 }
 
 .open-cart{
@@ -57,11 +58,13 @@ nav{
     position: fixed;
     padding: 1rem 2rem;
     width: 35rem;
+    max-height: 90vh;
     background-color: white;
     border-radius: 5px;
     right: 0.5rem;
     top: 4rem;
     border: 1px solid rgba(14, 11, 11, 0.226);
+    overflow-y: auto;
 }
 
 .cart-header{
@@ -97,9 +100,10 @@ nav{
 
 .cart-actions{
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    gap: 0.5rem;
 }
 
 .total{

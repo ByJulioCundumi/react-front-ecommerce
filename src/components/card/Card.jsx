@@ -1,8 +1,26 @@
 import React from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import {BsFillBagFill} from "react-icons/bs"
+import { useCartContext } from '../../context/CartContext'
+import { cartActionTypes } from '../../context/CartContext'
 
 function Card({title, img, newPrice, prevPrice}) {
+    const {cartItems, cDispatch} = useCartContext();
+
+    const addToTheCart = ()=>{
+
+        cDispatch({
+            type: cartActionTypes.ADD_TO_CART,
+            payload: {
+                img,
+                title,
+                newPrice,
+                prevPrice,
+                quantity: 1
+            }
+        })
+    }
+
   return (
     <section className="card">
             <img className='card-img' src={img} alt="" />
@@ -15,8 +33,8 @@ function Card({title, img, newPrice, prevPrice}) {
                 <section className="card-price">
                     <div className="price"><del>{prevPrice}</del> {newPrice}</div>
                 </section>
-                <div className="card-bag">
-                    <BsFillBagFill className='bag'/>
+                <div className="card-bag" >
+                    <BsFillBagFill onClick={()=> addToTheCart()} className='bag'/>
                 </div>
             </div>
         </section>

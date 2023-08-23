@@ -9,7 +9,7 @@ function Navigation() {
     const dispatch = useFilterDispatchContext()
     const state = useFilterState()
     const {filteredProducts, products} = state;
-    const {isCartOpen, cartDispatch} = useCartContext()
+    const {isCartOpen, cDispatch, cartItems} = useCartContext()
     
     const handleOnChange = (e)=>{
         const filtered = products.filter((p)=>{
@@ -22,16 +22,37 @@ function Navigation() {
     }
 
     const openCart = ()=>{
-        cartDispatch({
+        cDispatch({
             type: cartActionTypes.SET_CART_STATUS,
             payload: true
         })
     }
 
     const closeCart = ()=>{
-        cartDispatch({
+        cDispatch({
             type: cartActionTypes.SET_CART_STATUS,
             payload: false
+        })
+    }
+
+    const increaseItems = (title)=>{
+        cDispatch({
+            type: cartActionTypes.INCREASE_ITEM_QUANTITY,
+            payload: title
+        })
+    }
+
+    const decreaseItems = (title)=>{
+        cDispatch({
+            type: cartActionTypes.DECREASE_ITEM_QUANTITY,
+            payload: title
+        })
+    }
+
+    const removeItems = (title)=>{
+        cDispatch({
+            type: cartActionTypes.REMOVE_FROM_CART,
+            payload: title
         })
     }
 
@@ -46,7 +67,7 @@ function Navigation() {
             </a>
             <a href="#" className='cart-icon' onClick={()=> isCartOpen ? closeCart() : openCart()}>
                 <AiOutlineShoppingCart className='nav-icons'/>
-                <span className="cart-icon-span">0</span>
+                <span className="cart-icon-span">{cartItems.length}</span>
             </a>
             <a href="#">
                 <AiOutlineUserAdd className='nav-icons'/>
@@ -59,30 +80,34 @@ function Navigation() {
                 <button className='cart-btn' onClick={()=> isCartOpen ? closeCart() : openCart()}>x</button>
             </div>
             <div className="cart-items">
-                <div className="cart-item">
-                    <img className='cart-img' src="https://m.media-amazon.com/images/I/61-cBsLhJHL._AC_UY695_.jpg" alt="" />
+                {cartItems.length > 0 ? cartItems.map((i)=>{
+                    return <div className="cart-item">
+                    <img className='cart-img' src={i.img} alt="" />
                     <div className="cart-item-details">
-                        <h3 className='cart-details-title'>Nike Men's Sneaker</h3>
+                        <h3 className='cart-details-title'>{i.title}</h3>
                         <p className="cart-details-price">
-                            <del>500</del> 200
+                            <del>{i.prevPrice}</del> {i.newPrice}
                         </p>
                     </div>
                     <div className="cart-actions">
-                        <button className='cart-btn'>+</button>
-                        <p>1</p>
-                        <button className='cart-btn'>-</button>
+                        <button onClick={()=> increaseItems(i.title)} className='cart-btn'>+</button>
+                        <p>{i.quantity}</p>
+                        <button onClick={()=> decreaseItems(i.title)} className='cart-btn'>-</button>
                     </div>
                     <div className="cart-total-price">
-                        <p>200</p>
+                        <p>{parseInt(i.quantity) * parseInt(i.newPrice)}</p>
                     </div>
                     <div className="cart-delete">
-                        <button className='cart-btn'>x</button>
+                        <button onClick={()=> removeItems(i.title)} className='cart-btn'>x</button>
                     </div>
                 </div>
+                }) : <span>Your shopping cart is Empty</span>}
             </div>
             <div className="total">
                 <h3 className="total-title">Total:</h3>
-                <p>500</p>
+                <p>{cartItems.length > 0 ? cartItems.reduce((prev, i)=>{
+                    return prev += parseInt(i.newPrice * i.quantity);
+                },0) : "$0"}</p>
             </div>
         </div>
     </nav>
