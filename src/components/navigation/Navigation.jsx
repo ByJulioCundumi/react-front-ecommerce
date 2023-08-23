@@ -27,12 +27,46 @@ function Navigation() {
             <a href="#">
                 <AiOutlineHeart className='nav-icons'/>
             </a>
-            <a href="#">
+            <a href="#" className='cart-icon'>
                 <AiOutlineShoppingCart className='nav-icons'/>
+                <span className="cart-icon-span">0</span>
             </a>
             <a href="#">
                 <AiOutlineUserAdd className='nav-icons'/>
             </a>
+        </div>
+
+        <div className="cart-modal">
+            <div className="cart-header">
+                <h2 className="cart-title">Shopping Cart</h2>
+                <button className='cart-btn'>x</button>
+            </div>
+            <div className="cart-items">
+                <div className="cart-item">
+                    <img className='cart-img' src="https://m.media-amazon.com/images/I/61-cBsLhJHL._AC_UY695_.jpg" alt="" />
+                    <div className="cart-item-details">
+                        <h3 className='cart-details-title'>Nike Men's Sneaker</h3>
+                        <p className="cart-details-price">
+                            <del>500</del> 200
+                        </p>
+                    </div>
+                    <div className="cart-actions">
+                        <button className='cart-btn'>+</button>
+                        <p>1</p>
+                        <button className='cart-btn'>-</button>
+                    </div>
+                    <div className="cart-total-price">
+                        <p>200</p>
+                    </div>
+                    <div className="cart-delete">
+                        <button className='cart-btn'>x</button>
+                    </div>
+                </div>
+            </div>
+            <div className="total">
+                <h3 className="total-title">Total:</h3>
+                <p>500</p>
+            </div>
         </div>
     </nav>
   )

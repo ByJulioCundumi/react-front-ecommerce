@@ -2,6 +2,8 @@
     width: 15rem;
     height: 100%;
     position: fixed;
+    top: 0;
+    bottom: 0;
     border: 1px solid rgba(34, 32, 32, 0.089);
     display: flex;
     flex-direction: column;
@@ -14,5 +16,5 @@
     border-bottom: 1px solid rgba(44, 42, 42, 0.096);
     padding-bottom: 1rem;
     color: rgb(51, 48, 48);
-    margin-top: 1rem;
+    margin-top: 0.2rem;
 }
